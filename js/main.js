@@ -4,6 +4,13 @@
   var year = document.getElementById('year');
   if (year) year.textContent = new Date().getFullYear();
 
+  var topbar = document.querySelector('.topbar');
+  var syncTopbar = function () {
+    if (topbar) topbar.classList.toggle('is-scrolled', window.scrollY > 28);
+  };
+  syncTopbar();
+  window.addEventListener('scroll', syncTopbar, { passive: true });
+
   var reveals = document.querySelectorAll('.manifesto, .work-item, .capability-map article, .signal-section, .contact-section');
   reveals.forEach(function (element) { element.classList.add('reveal'); });
   if ('IntersectionObserver' in window) {
